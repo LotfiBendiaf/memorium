@@ -1,0 +1,78 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta property="og:site_name" content="memorium" />
+    <meta property="og:url" content="https://www.kiddilycare.com/" />
+    <meta property="og:title" content="Kiddily Care" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="Save your memories !"
+    />
+
+    <!-- <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kiddily Care" />
+    <meta
+      name="twitter:description"
+      content="Kiddily Care est la référence du monde du soin et beauté, appareils de nettoyage et soin de visage et corps.
+      Retrouvez les meilleurs appareils de soin de visage et corps, nettoyage de peau et accessoires"
+    /> -->
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      sizes="100x100"
+      href="{% static 'images/favicon.ico' %}"
+    />
+
+    <!--Title-->
+    <title>{% block title %}{% endblock title %}</title>
+    <!--Meta description-->
+    {% block meta %} {% endblock meta %}
+
+    <!-- Style -->
+    {% block style %} {% endblock style %}
+
+    <!-- Scripts-->
+    {% block scripts %} {% endblock scripts %}
+
+    <!--Font Awesome-->
+    <script
+      src="https://kit.fontawesome.com/e482781f42.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+round|Material+Icons+Round"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <a href="{% url 'gallery' %}">
+        <img class="logo" src="{% static "images/memorium_logo.png"%}" alt="">
+      </a>
+      
+      <div class="profile">
+        <img class="icon" src="{% static "images/memorium_icon.png"%}" alt="">
+      </div>
+    </header>
+    
+    {% block content %} 
+    {% endblock content %}
+
+    <footer>
+      <div class="profile">
+        <img class="icon" src="{% static "images/memorium_icon.png"%}" alt="">
+      </div>
+      <p>Memorium is an e-Gallery helping you storing your memories to keep them immortal !</p>
+
+      <small>&copy; 2022, Memorium.</small>
+    </footer>
+
+  </body>
+</html>
