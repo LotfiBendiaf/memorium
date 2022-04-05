@@ -346,7 +346,7 @@ footer{
 }
 
 /* MEDIA QUERIES */
-/* @media screen and (max-width: 1050px) {
+@media screen and (max-width: 1050px) {
   .login, .signup{
     width: 50%;
     padding: 3rem;
@@ -426,4 +426,4 @@ footer{
     display: none;
   }
 
-} */
+}
