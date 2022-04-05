@@ -32,7 +32,7 @@ e-Gallery helping you storing your memories to keep them immortal !{% endblock t
       <h4>By {{ object.author }}</h4>
       <small>{{ object.date_added }}</small>
     </div>
-    <div>
+    <div class="actions">
       <a href="{% url 'edit_memory' object.pk %}">
         <button class="btn btn-outline-primary" type="submit">Edit</button>
       </a>
@@ -46,6 +46,15 @@ e-Gallery helping you storing your memories to keep them immortal !{% endblock t
   <img class="image" src="{{ object.imageURL }}" alt="" />
   <small>Description</small>
   <div class="description">{{ object.description }}</div>
+  <div class="actions" style="display: flex; justify-content: space-between; margin-top: 1rem;">
+    <a href="{% url 'edit_memory' object.pk %}">
+      <button class="btn btn-outline-primary" type="submit">Edit</button>
+    </a>
+    <div class="vertical-line"></div>
+    <a href="{% url 'delete_memory' object.pk %}">
+      <button class="btn btn-danger" type="submit">Delete</button>
+    </a>
+  </div>
 </main>
 
 {% endblock content %}

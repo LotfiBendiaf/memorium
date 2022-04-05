@@ -24,7 +24,9 @@ Memorium | is an e-Gallery helping you storing your memories to keep them immort
 {% endblock style %}
 {% block content %}
 <main class="signup">
-  <h2>Sign Up</h2>
+  <h2 style="width: 100%; display: flex; justify-content: space-between; align-items: center;">Sign Up
+    <img class="icon" src="{% static "images/memorium_icon.png"%}" alt="">
+  </h2>
   <form method="post">
     {% csrf_token %} 
     {{ form|crispy}}

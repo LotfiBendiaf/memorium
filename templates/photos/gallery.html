@@ -29,17 +29,19 @@ e-Gallery helping you storing your memories to keep them immortal !
   </aside>
   <section>
     {% for memory in memories %}
-    <div class="memory">
-      <div>
-        <img src="{{ memory.imageURL }}" alt="" />
-        <hr>
-        <p>{{ memory.title }}</p>
-        <p>Category : {{ memory.category }}</p>
+      <div class="memory">
+        <div>
+          <img src="{{ memory.imageURL }}" alt="" />
+          <hr>
+          <p><b>{{ memory.title }}</b></p>
+          <p>Category : {{ memory.category }}</p>
+        </div>
+        <a href="{% url 'memory' memory.pk %}">
+          <button class="button">View</button>
+        </a>
       </div>
-      <a href="{% url 'memory' memory.pk %}">
-        <button class="button">View</button>
-      </a>
-    </div>
+      {% empty %}
+        <h1>Oops. No memory for this category</h1>
     {% endfor %}
   </section>
 </main>

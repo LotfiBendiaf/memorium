@@ -1,4 +1,7 @@
-from unicodedata import category
+from django.contrib.auth.mixins import ( 
+    LoginRequiredMixin, 
+    UserPassesTestMixin # new
+)
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.views.generic.edit import CreateView
 from django.shortcuts import render
@@ -6,15 +9,6 @@ from django.urls import reverse, reverse_lazy
 from .models import Category, Memory
 
 # Create your views here.
-
-def gallery(request):
-    return render (request, 'photos/gallery.html')
-
-def memory(request):
-    return render (request, 'photos/memory.html')
-
-def addMemory(request):
-    return render (request, 'photos/add_memory.html')
 
 class MemoryListView(ListView): 
     model = Memory
@@ -27,20 +21,19 @@ class MemoryListView(ListView):
         else:
             memories = Memory.objects.filter(category__name=category)
 
-        print("Category : ", category)
         context = super(MemoryListView, self).get_context_data(**kwargs)
         context.update({
-            'categories': Category.objects.all(),
+            'categories': Category.objects.all()[0:4],
             'memories': memories
         })
         return context
 
-class MemoryDetailView(DetailView):
+class MemoryDetailView(LoginRequiredMixin, DetailView):
     model = Memory
     template_name = 'photos/memory.html'
     fields = ['title', 'author', 'body']
 
-class MemoryCreateView(CreateView): 
+class MemoryCreateView(LoginRequiredMixin, CreateView): 
     model = Memory
     template_name = 'photos/add_memory.html'
     fields = ('title', 'memory', 'category', 'description',)
@@ -63,7 +56,7 @@ class MemoryCreateView(CreateView):
         return super().form_valid(form)
 
 
-class MemoryUpdateView(UpdateView):
+class MemoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Memory
     fields = ('title', 'category', 'description', )
     template_name = 'photos/edit_memory.html'
@@ -86,8 +79,16 @@ class MemoryUpdateView(UpdateView):
     def get_success_url(self):         
         return reverse_lazy('memory', args = (self.object.id,))
 
-class MemoryDeleteView(DeleteView):
+    def test_func(self): # new
+        obj = self.get_object()
+        return obj.author == self.request.user
+
+class MemoryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Memory
     template_name = 'photos/delete_memory.html'
     success_url = reverse_lazy('gallery')
+
+    def test_func(self): # new
+        obj = self.get_object()
+        return obj.author == self.request.user
 

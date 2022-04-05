@@ -57,9 +57,10 @@
 
   <body>
     <header>
-      <a href="{% url 'gallery' %}">
-        <img class="logo" src="{% static "images/memorium_logo.png"%}" alt="">
+      <a class="logo" href="{% url 'gallery' %}">
+        <img class="logo" src="{% static "images/memorium_logo.png"%}" alt=""> 
       </a>
+      <a href="{% url 'new_memory' %}" class="btn btn-outline-primary" id="add-btn">Add +</a>
 
       <div class="profile">
         {% if user.is_authenticated %}
@@ -81,8 +82,7 @@
         <img class="icon" src="{% static "images/memorium_icon.png"%}" alt="">
       </div>
       <p>
-        Memorium is an e-Gallery helping you storing your memories to keep them
-        immortal !
+        Memorium is an e-Gallery that helps you store your memories and make them immortal !
       </p>
 
       <small>&copy; 2022, Memorium.</small>
