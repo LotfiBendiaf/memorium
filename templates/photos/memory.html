@@ -1,6 +1,7 @@
 <!--Base -->
-{% extends 'base.html' %} {% load static %} {% block title %}Kiddily Care |
-Produits de soin du visage et corps & pierres de Jade{% endblock title %}
+{% extends 'base.html' %} {% load static %} {% block title %}Memorium | is an
+e-Gallery helping you storing your memories to keep them immortal !{% endblock
+title %}
 <!--Meta description-->
 {% block meta %}
 <meta
@@ -17,8 +18,7 @@ Produits de soin du visage et corps & pierres de Jade{% endblock title %}
   integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
   crossorigin="anonymous"
 />
-{% endblock style %} 
-{% block content %}
+{% endblock style %} {% block content %}
 <main class="memory-page">
   <a class="link" href="{% url 'gallery' %}">
     <div class="rounded">
@@ -26,7 +26,7 @@ Produits de soin du visage et corps & pierres de Jade{% endblock title %}
     </div>
     <span>RETURN TO GALLERY</span>
   </a>
-  <hr>
+  <hr />
   <div class="details">
     <div>
       <h4>{{ object.title }}</h4>
@@ -43,13 +43,10 @@ Produits de soin du visage et corps & pierres de Jade{% endblock title %}
       </a>
     </div>
   </div>
-  <hr>
-  <img class="image" src="{{ object.imageURL }}" alt="">
+  <hr />
+  <img class="image" src="{{ object.imageURL }}" alt="" />
   <small>Description</small>
-  <div class="description">
-    {{ object.description }}
-  </div>
+  <div class="description">{{ object.description }}</div>
 </main>
-
 
 {% endblock content %}

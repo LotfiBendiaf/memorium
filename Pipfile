@@ -13,6 +13,7 @@ whitenoise = "*"
 dj-database-url = "*"
 gunicorn = "*"
 boto3 = "*"
+django-storages = "*"
 
 [dev-packages]
 

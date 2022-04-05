@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     # 3rd Party
     'crispy_forms',
 
+    'storages',
+
 
     'memorium',
 ]
@@ -139,7 +141,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) # new
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -155,7 +157,7 @@ AWS_SECRET_ACCESS_KEY='nMX05UEYQmBh8PHckwb1iALr4/yntrH2bpROCQW9'
 
 AWS_STORAGE_BUCKET_NAME='memorium-gallery'
 
-DEFAULT_FILE_STORAGE='storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
