@@ -15,19 +15,14 @@ e-Gallery helping you storing your memories to keep them immortal !
 {% endblock style %} {% block content %}
 <main class="container">
   <aside>
-    <h3>Categories</h3>
+    <h5>Categories</h5>
     <hr />
-    <ul>
-      <li>
-        <a href="{% url 'gallery' %}">All</a>
-      </li>
+      <a id="link" href="{% url 'gallery' %}">All</a>
       {% for category in categories%}
-      <hr />
-      <li>
-        <a href="{% url 'gallery' %}?category={{ category.name }}">{{ category.name }}</a>
-      </li>
+        <hr />
+        <a id="link" href="{% url 'gallery' %}?category={{ category.name }}">{{ category.name }}</a>
       {% endfor %}
-    </ul>
+      <hr>
     <a href="{% url 'new_memory' %}">
       <button class="button">Add new memory</button>
     </a>
@@ -37,8 +32,9 @@ e-Gallery helping you storing your memories to keep them immortal !
     <div class="memory">
       <div>
         <img src="{{ memory.imageURL }}" alt="" />
-        <h4>{{ memory.title }}</h4>
-        <h5>{{ memory.category }}</h5>
+        <hr>
+        <p>{{ memory.title }}</p>
+        <p>Category : {{ memory.category }}</p>
       </div>
       <a href="{% url 'memory' memory.pk %}">
         <button class="button">View</button>

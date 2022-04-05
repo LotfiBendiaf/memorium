@@ -47,14 +47,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'whitenoise.runserver_nostatic', # new
+    'storages',
+    
+    'memorium',
+    'accounts',
 
     # 3rd Party
     'crispy_forms',
 
-    'storages',
-
-
-    'memorium',
 ]
 
 MIDDLEWARE = [
@@ -148,16 +148,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Bootstrap
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # AWS S3 BUCKET Configuration
-AWS_ACCESS_KEY_ID='AKIA5CSVKCH37GQ6INLD'
-
-AWS_SECRET_ACCESS_KEY='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'
-
 AWS_STORAGE_BUCKET_NAME='memorium-gallery'
+AWS_ACCESS_KEY_ID='AKIA5CSVKCH37GQ6INLD'
+AWS_SECRET_ACCESS_KEY='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'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
+
+# Login redirect
+LOGIN_REDIRECT_URL = 'gallery'
+LOGOUT_REDIRECT_URL = 'gallery'
