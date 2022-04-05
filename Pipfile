@@ -12,6 +12,7 @@ psycopg2-binary = "*"
 whitenoise = "*"
 dj-database-url = "*"
 gunicorn = "*"
+boto3 = "*"
 
 [dev-packages]
 
