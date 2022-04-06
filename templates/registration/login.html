@@ -21,7 +21,9 @@ e-Gallery helping you storing your memories to keep them immortal !{% endblock t
   <img class="icon" src="{% static "images/memorium_icon.png"%}" alt="">
   <form method="post">
   {% csrf_token %}
-  {{ form|crispy }}
+  <div style="text-align: start;">
+    {{ form|crispy }}
+  </div>
   <button class="button" type="submit">Log In</button>
   </form>
   <br>
