@@ -25,7 +25,7 @@ class Memory(models.Model):
         'auth.User',
         on_delete=models.CASCADE,
         )
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     
     def __str__(self):
         return self.title
